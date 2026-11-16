@@ -1,4 +1,4 @@
-export default function ProductPage() {
+export default function ProductsPage() {
   return (
     <article>
       <h1 className='text-3xl font-bold tracking-tight'>Curio & Cart Products</h1>

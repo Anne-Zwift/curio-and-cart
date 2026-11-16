@@ -15,11 +15,10 @@ export default function Header() {
 
   return (
     <header className='sticky top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md'>
-      {/**My logo+nav+hamburger will be placed here*/}
       <div className='mx-auto flex h-16 max-w-7xl items-center justify-between px-6'>
         <Link
           href='/'
-          className='text-xl font-bold tracking-tight text-slate-900 hover:opacity-30 transition'>
+          className='text-xl font-bold tracking-tight text-slate-900 hover:opacity-70 transition'>
           Curio & Cart
         </Link>
 
@@ -70,7 +69,7 @@ export default function Header() {
               key={href}
               href={href}
               onClick={() => setOpen(false)} // close after tapping a link
-              className='py-1.5 hover:text-slate-200 transition-colors'>
+              className='py-1.5 hover:text-slate-900 transition-colors'>
               {label}
             </Link>
           ))}
