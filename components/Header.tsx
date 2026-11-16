@@ -7,6 +7,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/products', label: 'Products' },
   { href: '/contact', label: 'Contact' },
+  { href: '/cart', label: 'Cart' },
 ];
 
 // components/Header.tsx
