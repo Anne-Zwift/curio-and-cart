@@ -3,7 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-const links = [{ href: '/', label: 'Landing Page' }];
+const links = [
+  { href: '/', label: 'Landing Page' },
+  { href: '/products', label: 'Products' }
+
+];
 
 // components/Header.tsx
 export default function Header() {
