@@ -5,8 +5,7 @@ import Link from 'next/link';
 
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' }
-
+  { href: '/products', label: 'Products' },
 ];
 
 // components/Header.tsx
