@@ -37,3 +37,19 @@ export interface ApiResponse {
     totalCount: number;
   };
 }
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
+// remote control, update state
+export interface CartContextType {
+  items: CartItem[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+  totalItems: number;
+  totalPrice: number;
+}
