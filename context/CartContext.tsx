@@ -15,34 +15,32 @@ const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  //Load saved cart items from localStorage once mounted in the browser
+  //Load saved cart items after mount without synchronous setState in effect
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(CART_STORAGE_KEY);
-      if (saved) {
-        setItems(JSON.parse(saved));
-      }
-    } catch (error) {
-      console.error('Failed to load cart from localStorage:', error);
-    } finally {
-      setIsLoaded(true);
+    const saved = localStorage.getItem(CART_STORAGE_KEY);
+    if (saved) {
+      queueMicrotask(() => {
+        try {
+          setItems(JSON.parse(saved));
+        } catch (error) {
+          console.error('Failed to parse cart from localStorage:', error);
+        }
+      });
     }
   }, []);
 
-  //Save cart items to localStorage whenever items change
-  useEffect(() => {
-    if (isLoaded) return;
-    try {
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
-    } catch (error) {
-      console.error('Failed to save cart to localStorage:', error);
-    }
-  }, [items, isLoaded]);
+  //Helper that updates both React state and localStorage together
+  const updateCart = (updater: (prev: CartItem[]) => CartItem[]) => {
+    setItems((prev) => {
+      const next = updater(prev); // 1. Calculate the new cart array from the previous array
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items)); // 2. Save that exact new array to browser storage
+      return next; // 3. Hand that exact new array back to React's setItems
+    });
+  };
 
   const addToCart = (product: Product) => {
-    setItems((prevItems) => {
+    updateCart((prevItems) => {
       const existingIndex = prevItems.findIndex(
         (item) => item.product.id === product.id,
       );
@@ -70,7 +68,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    setItems((prevItems) =>
+    updateCart((prevItems) =>
       prevItems.map((item) =>
         item.product.id === productId ? { ...item, quantity } : item,
       ),
@@ -78,7 +76,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const clearCart = () => {
-    setItems([]);
+    updateCart(() => []);
   };
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
