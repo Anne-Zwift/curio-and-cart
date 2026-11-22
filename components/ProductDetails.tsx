@@ -90,7 +90,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           <button
             type='button'
             onClick={handleAddToCart}
-            className='w-full cursor-pinter rounded-lg bg-slate-300 px-6 py-3 text-sm font-semibold text-slate-600'>
+            className={`w-full cursor-pointer rounded-lg px-6 py-3 text-sm font-semibold text-white ${added ? 'bg-emerald-700' : 'bg-slate-900 hover:bg-slate-700'}`}>
             {added ? 'Added to Cart ✓' : 'Add to Cart'}
           </button>
         </div>
