@@ -1,13 +1,25 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/lib/types';
+import { useCart } from '@/context/CartContext';
 
 interface ProductDetailsProps {
   product: Product;
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
+  const [added, setAdded] = useState(false);
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  };
+
   const hasDiscount =
     product.discountedPrice !== undefined &&
     product.discountedPrice < product.price;
@@ -77,9 +89,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         <div className='mt-8 border-t border-slate-200 pt-6'>
           <button
             type='button'
-            disabled
-            className='w-full cursor-not-allowed rounded-lg bg-slate-300 px-6 py-3 text-sm font-semibold text-slate-600'>
-            Add to Cart (coming soon in Cart phase)
+            onClick={handleAddToCart}
+            className='w-full cursor-pinter rounded-lg bg-slate-300 px-6 py-3 text-sm font-semibold text-slate-600'>
+            {added ? 'Added to Cart ✓' : 'Add to Cart'}
           </button>
         </div>
       </div>
