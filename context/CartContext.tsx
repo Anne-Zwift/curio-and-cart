@@ -34,7 +34,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const updateCart = (updater: (prev: CartItem[]) => CartItem[]) => {
     setItems((prev) => {
       const next = updater(prev); // 1. Calculate the new cart array from the previous array
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items)); // 2. Save that exact new array to browser storage
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(next)); // 2. Save that exact new array to browser storage
       return next; // 3. Hand that exact new array back to React's setItems
     });
   };
@@ -57,13 +57,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const removeFromCart = (productId: string) => {
-    setItems((prevItems) =>
+    updateCart((prevItems) =>
       prevItems.filter((item) => item.product.id !== productId),
     );
   };
 
   const updateQuantity = (productId: string, quantity: number) => {
-    if (quantity) {
+    if (quantity <= 0) {
       removeFromCart(productId);
       return;
     }
