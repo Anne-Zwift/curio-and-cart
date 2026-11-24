@@ -53,3 +53,17 @@ export interface CartContextType {
   totalItems: number;
   totalPrice: number;
 }
+
+export interface ContactFormValues {
+  fullName: string;
+  subject: string;
+  email: string;
+  message: string;
+}
+
+export interface ContactFormErrors {
+  fullName?: string;
+  subject?: string;
+  email?: string;
+  message?: string;
+}
