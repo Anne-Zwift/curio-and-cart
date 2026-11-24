@@ -19,7 +19,7 @@ export function validateContactForm(
   }
 
   if (values.message.trim().length < 10) {
-    errors.message = 'Message must be at least 3 characters.';
+    errors.message = 'Message must be at least 10 characters.';
   }
 
   return errors;
