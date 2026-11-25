@@ -59,6 +59,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
+        <span className='mt-4 inline-block w-full rounded-md bg-slate-900 px-4 py-2 text-center text-sm font-medium text-white transition group-hover:bg-slate-700'>
+          View Product and Read Reviews
+        </span>
       </div>
     </Link>
   );
