@@ -98,9 +98,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       {/**Review*/}
       <section className='mt-12 border-t border-slate-200 pt-8'>
         <h2 className='text-xl font-bold text-slate-900'>Customer Reviews</h2>
-        {product.review && product.review.length > 0 ? (
+        {product.reviews && product.reviews.length > 0 ? (
           <ul className='mt-4 space-y-4'>
-            {product.review.map((review) => (
+            {product.reviews.map((review) => (
               <li
                 key={review.id}
                 className='rounded-lg border border-slate-200 bg-white p-4'>

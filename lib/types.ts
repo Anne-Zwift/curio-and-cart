@@ -22,7 +22,7 @@ export interface Product {
   image: ProductImage;
   rating: number;
   tags: string[];
-  review: Review[];
+  reviews: Review[];
 }
 
 export interface ApiResponse {
