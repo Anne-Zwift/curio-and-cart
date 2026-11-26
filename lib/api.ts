@@ -16,7 +16,7 @@ export async function getProducts(): Promise<Product[]> {
   return json.data;
 }
 
-export async function getProductById(id: string): Promise<Product> {
+export async function getProductById(id: string): Promise<Product | null> {
   'use cache';
 
   if (!API_BASE_URL) {
@@ -24,6 +24,10 @@ export async function getProductById(id: string): Promise<Product> {
   }
 
   const res = await fetch(`${API_BASE_URL}/${id}`);
+
+  if (res.status === 404 || res.status === 400) {
+    return null;
+  }
 
   if (!res.ok) throw new Error(`Failed to fetch product: ${res.status}`);
 

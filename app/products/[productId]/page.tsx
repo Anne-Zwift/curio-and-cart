@@ -1,6 +1,7 @@
 import ProductDetails from '@/components/ProductDetails';
 import { getProductById } from '@/lib/api';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export default async function ProductDetailsPage({
   params,
@@ -9,6 +10,10 @@ export default async function ProductDetailsPage({
 }) {
   const { productId } = await params;
   const product = await getProductById(productId);
+
+  if (!product) {
+    notFound();
+  }
 
   return (
     <div>
