@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Curio & Cart',
+  title: 'Home | Curio & Cart',
   description: 'An online shop of curiosities - built with Next.js',
 };
 
