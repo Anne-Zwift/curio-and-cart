@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/lib/types';
 import { useCart } from '@/context/CartContext';
+import Link from 'next/link';
 
 interface ProductDetailsProps {
   product: Product;
@@ -17,7 +18,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const handleAddToCart = () => {
     addToCart(product);
     setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
+    setTimeout(() => setAdded(false), 5000);
   };
 
   const hasDiscount =
@@ -98,9 +99,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       {/**Review*/}
       <section className='mt-12 border-t border-slate-200 pt-8'>
         <h2 className='text-xl font-bold text-slate-900'>Customer Reviews</h2>
-        {product.review && product.review.length > 0 ? (
+        {product.reviews && product.reviews.length > 0 ? (
           <ul className='mt-4 space-y-4'>
-            {product.review.map((review) => (
+            {product.reviews.map((review) => (
               <li
                 key={review.id}
                 className='rounded-lg border border-slate-200 bg-white p-4'>
@@ -122,6 +123,22 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           <p className='mt-3 text-sm text-slate-500'>
             No reviews yet for this product.
           </p>
+        )}
+        {added && (
+          <div
+            role='status'
+            aria-live='polite'
+            className='fixed right-6 bottom-6 z-50 flex items-center gap-3 rounded-lg bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg'>
+            <span className='flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-slate-950'>
+              ✓
+            </span>
+            <span>
+              <strong>{product.title} added to your cart!</strong>
+            </span>
+            <Link href='/cart' className='ml-2 underline hover:text-slate-300'>
+              View Cart
+            </Link>
+          </div>
         )}
       </section>
     </div>

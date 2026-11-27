@@ -22,20 +22,22 @@ export interface Product {
   image: ProductImage;
   rating: number;
   tags: string[];
-  review: Review[];
+  reviews: Review[];
 }
 
-export interface ApiResponse {
-  data: Product[];
-  meta: {
-    isFirstPage: boolean;
-    isLastPage: boolean;
-    currentPage: number;
-    previousPage: number | null;
-    nextPage: number | null;
-    pageCount: number;
-    totalCount: number;
-  };
+export interface ApiMeta {
+  isFirstPage: boolean;
+  isLastPage: boolean;
+  currentPage: number;
+  previousPage: number | null;
+  nextPage: number | null;
+  pageCount: number;
+  totalCount: number;
+}
+
+export interface ApiResponse<T> {
+  data: T;
+  meta: ApiMeta;
 }
 
 export interface CartItem {

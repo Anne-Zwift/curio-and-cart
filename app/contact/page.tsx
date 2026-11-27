@@ -1,4 +1,10 @@
+import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Curio & Cart',
+  description: 'Have a question about a product or order? Send us a message.',
+};
 
 export default function ContactPage() {
   return (

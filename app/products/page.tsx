@@ -1,5 +1,11 @@
+import { Metadata } from 'next';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/api';
+
+export const metadata: Metadata = {
+  title: 'Products | Curio & Cart',
+  description: 'Browse our curated collection of curiosities and treasures',
+};
 
 export default async function ProductsPage() {
   const products = await getProducts();
