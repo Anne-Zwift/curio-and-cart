@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import { CartProvider } from '@/context/CartContext';
+import Footer from '@/components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,11 +34,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             {children}
           </main>
           {/**Footer*/}
-          <footer className='border-t border-slate-200 bg-white'>
-            <div className='mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500'>
-              <p>&copy; 2026 Curio & Cart</p>
-            </div>
-          </footer>
+          <div>
+            <Footer />
+          </div>
         </CartProvider>
       </body>
     </html>
