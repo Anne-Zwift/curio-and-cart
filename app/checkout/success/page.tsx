@@ -34,7 +34,7 @@ export default function CheckoutSuccessPage() {
       </p>
       <Link
         href='/products'
-        className='mt-6 inline-block rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:text-slate-800'>
+        className='mt-6 inline-block rounded-lg bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:text-slate-800 hover:bg-slate-400'>
         Continue Shopping
       </Link>
     </section>
