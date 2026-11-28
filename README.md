@@ -110,6 +110,35 @@ The application uses a **Server-Fetched External API** architecture, connecting 
    npm run dev
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
+   
+
+## 🤖 AI Log
+
+**Tool used:** Gemini 
+
+**Date:** November 2026
+
+**Q:** I’ve got this as a part of my terminal message after running “npm run build” with Next.js, what does it mean?
+
+<img width="258" height="148" alt="image" src="https://github.com/user-attachments/assets/96401c47-c494-409b-b8cf-76dca5abf403" />
+
+**Purpose:** Explanation of the image
+
+**Outcome:** Understanding the npm run build outcome.
+
+**Q:** Keep or remove the Next.js icons xmlns?
+
+**Outcome:** Understanding it was safe to remove.
+
+**Q:** How to build and think when building a skeleton from scratch?
+
+**Outcome:** Method to Build Any Skeleton From Scratch.
+
+**Q:** Learn how to use Next.js dev.tools?
+
+**Outcome:** Knowledge of how the N-works and what it means.
+
+
 
 ## ✍️ Author
 
