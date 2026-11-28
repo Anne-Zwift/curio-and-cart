@@ -1,6 +1,7 @@
-# JS Frameworks — Next.js: Online Shop — Curio & Cart
+# JS Frameworks
+Next.js: Online Shop Curio & Cart
 
-An online shop for curiosities—various odds, ends, and little treasures—built with Next.js App Router, TypeScript, and Tailwind CSS.
+Built with: Next.js App Router, TypeScript, and Tailwind CSS.
 
 ## 🔗 Live Demo
 
@@ -42,8 +43,10 @@ The components defined in Next.js App Router special files are rendered in a spe
 │   ├── products/
 │   │   ├── page.tsx               # Product catalog grid
 │   │   ├── loading.tsx            # Skeleton loading UI
+|   |   |__ error.tsx              # Error boundaries
 │   │   └── [productId]/
 │   │       └── page.tsx           # Dynamic product details & generateMetadata
+|   |       |__ loading.tsx        # Skeleton loading UI
 │   ├── cart/page.tsx              # Shopping cart route
 │   ├── checkout/success/page.tsx  # Order confirmation route
 │   └── contact/page.tsx           # Contact page route
